@@ -7,6 +7,8 @@ const Products = () => {
     return (
         <div>
             <Heading>Products</Heading>
+            <br/>
+            <Heading as='h3' size={'md'}>Add some products</Heading>
         </div>
     );
 
