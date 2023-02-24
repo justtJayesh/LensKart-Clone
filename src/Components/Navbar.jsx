@@ -42,7 +42,7 @@ const Links = [
 
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const navigate = useNavigate
+  const navigate = useNavigate()
 
   return (
     <Box bgColor={'white'} w={'100%'}>

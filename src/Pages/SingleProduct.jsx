@@ -23,6 +23,7 @@ const SingleProduct = () => {
     }
 
     console.log(cartItem)
+
     const { brand, category, color, image, price, productImages, rating, size, title } = productItem
 
     return (
@@ -83,7 +84,12 @@ const SingleProduct = () => {
                             <Heading fontWeight={'medium'} color={'#ABABAB'} fontSize={'lg'} marginBottom={'10px'}>Color: {color}</Heading>
                             <Heading fontWeight={'bold'} color={'teal'} fontSize={'2xl'} marginBottom={'10px'}>Rs.{price}</Heading>
                             <Box>
-                                <Button w={'390px'} colorScheme='teal' variant='solid' marginBottom={'10px'} onClick={handleCart}>Buy Now</Button>
+                                <Button
+                                    w={'390px'}
+                                    colorScheme='teal'
+                                    variant='solid'
+                                    marginBottom={'10px'}
+                                    onClick={handleCart}>Buy Now</Button>
                             </Box>
                             <CollapseEx title={'Technical Information'} />
                             <CollapseEx title={'Visit Nearby Store'} />
