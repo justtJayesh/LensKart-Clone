@@ -3,7 +3,7 @@ import {Heading} from '@chakra-ui/react'
 const NotFound = () => {
     return (
         <div>
-
+            <Heading>Product Not Found..</Heading>
         </div>
     );
 

@@ -8,13 +8,7 @@ import {
   Link,
   IconButton,
   Button,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  MenuDivider,
   useDisclosure,
-  useColorModeValue,
   Stack,
   Image,
   Input,
@@ -26,23 +20,25 @@ import {
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon, SearchIcon } from '@chakra-ui/icons';
 import logo from '../Assets/logo.png';
-import { Link as RouterLink, useNavigate } from "react-router-dom"
+import { Link as RouterLink, Navigate, useNavigate } from "react-router-dom"
 
-
-// const Links = ['Eyeglasses', 'Computer glasses', 'Contact Lenses', 'Sunglasses'];
-const Links = [
-  { to: '/', title: 'HOME' },
-  { to: '/products', title: 'EYEGLASSES' },
-  { to: '/products', title: 'KIDS GLASSES' },
-  { to: '/products', title: 'CONTACT LENSES' },
-  { to: '/products', title: 'SUNGLASSES' },
-  { to: '/products', title: 'STORE LOCATION' },
-]
 
 
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const navigate = useNavigate()
+
+  const Links = [
+    { to: '/products', title: 'EYEGLASSES' },
+    { to: '/products', title: 'KIDS GLASSES' },
+    { to: '/products', title: 'CONTACT LENSES' },
+    { to: '/products', title: 'SUNGLASSES' },
+    { to: '/products', title: 'STORE LOCATION' },
+  ]
+
+  const handleClick = () =>{
+    navigate(`/addtocart`)
+  }
 
   return (
     <Box bgColor={'white'} w={'100%'}>
@@ -78,7 +74,7 @@ export default function Navbar() {
               <Flex justifyContent={'space-evenly'}>
                 <Text _hover={{ cursor: 'pointer' }}>Sign up</Text>
                 <Text _hover={{ cursor: 'pointer' }}>Sign In</Text>
-                <Text _hover={{ cursor: 'pointer' }}>Cart</Text>
+                <Text _hover={{ cursor: 'pointer' }} onClick={handleClick}>Cart</Text>
               </Flex>
 
             </Box>

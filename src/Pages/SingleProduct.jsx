@@ -11,16 +11,21 @@ const SingleProduct = () => {
     const [productItem, setProductItem] = useState([])
     const { cartItem, setCartItem } = useContext(CartContext)
 
+    const handleCart = () => {
+        setCartItem([...cartItem, productItem])
+        alert('Item added Successfully')
+    }
 
     useEffect(() => {
         axios.get(`http://localhost:8080/products/${id}`)
             .then((res) => setProductItem(res.data))
     }, [])
 
-    const handleCart = () => {
-        setCartItem([...cartItem, productItem])
-        alert('Item added Successfully')
-    }
+    useEffect(() => {
+        localStorage.setItem('cartItem', JSON.stringify(cartItem));
+    }, [cartItem]);
+
+
 
     console.log(cartItem)
 

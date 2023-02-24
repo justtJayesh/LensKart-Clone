@@ -9,7 +9,6 @@ import AuthContextProvider from './Context/AuthContext';
 import CartContextProvider from './Context/CartContext';
 
 
-
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
 
