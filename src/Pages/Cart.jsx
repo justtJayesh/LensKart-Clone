@@ -1,9 +1,15 @@
-import React from 'react';
+import { Heading } from '@chakra-ui/react';
+import React, { useContext } from 'react';
+import { CartContext } from '../Context/CartContext';
 
 const Cart = () => {
+    const {cartItem, setCartItems} = useContext(CartContext)
+    console.log(cartItem)
+
     return (
         <div>
-            <h1>Cart</h1>
+            <Heading>These are your Cart Items..</Heading>
+
         </div>
     );
 

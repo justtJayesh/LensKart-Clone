@@ -32,7 +32,7 @@ const ProductCard = ({ data }) => {
                 </Box>
                 <Divider />
                 <Box h={3}></Box>
-                <Button colorScheme='teal' variant='ghost' width='200px' onClick={() => console.log(id)}>Details</Button>
+                <Button colorScheme='teal' variant='ghost' width='200px'>Details</Button>
             </Box>
         </RouterLink>
     );

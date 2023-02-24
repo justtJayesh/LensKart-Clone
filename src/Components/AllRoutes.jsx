@@ -7,6 +7,7 @@ import Products from '../Pages/Products';
 import SingleProduct from '../Pages/SingleProduct';
 
 
+
 const AllRoutes = () => {
     return (
         <Routes>

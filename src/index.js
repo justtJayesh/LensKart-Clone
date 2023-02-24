@@ -5,8 +5,9 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter } from "react-router-dom";
 import { ChakraProvider } from '@chakra-ui/react';
-import { AuthContext } from './Context/AuthContext';
-import { CartContext } from './Context/CartContext';
+import AuthContextProvider from './Context/AuthContext';
+import CartContextProvider from './Context/CartContext';
+
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -14,11 +15,11 @@ root.render(
 
   <ChakraProvider>
     <BrowserRouter>
-      <AuthContext>
-        <CartContext>
+      <AuthContextProvider>
+        <CartContextProvider>
           <App />
-        </CartContext>
-      </AuthContext>
+        </CartContextProvider>
+      </AuthContextProvider>
     </BrowserRouter>
   </ChakraProvider>
 );
