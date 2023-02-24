@@ -9,7 +9,7 @@ export const CollapseEx = ({ title }) => {
   return (
     <>
       <VStack width='100%' spacing='0' borderTopRadius='10%'>
-        <Box borderBottom='2px rgb(243,243,243) solid ' width={'100%'} padding='15px'><HStack width='100%' justifyContent='space-between' onClick={onToggle}><Text>{title}</Text> <ChevronDownIcon /></HStack>
+        <Box borderBottom='2px rgb(243,243,243) solid ' width={'100%'} padding='15px'><HStack width='100%' justifyContent='space-between' onClick={onToggle} _hover={{cursor:'pointer'}}><Text>{title}</Text> <ChevronDownIcon /></HStack>
         </Box>
         <Collapse in={isOpen} animateOpacity>
           <Box padding={'4px'} color={'grey'} w={208} h={200} overflowY='scroll'>

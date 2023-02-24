@@ -33,26 +33,12 @@ import { Link as RouterLink, useNavigate } from "react-router-dom"
 const Links = [
   { to: '/', title: 'HOME' },
   { to: '/products', title: 'EYEGLASSES' },
-  { to: '/products', title: 'COMPUTER GLASSES' },
   { to: '/products', title: 'KIDS GLASSES' },
   { to: '/products', title: 'CONTACT LENSES' },
   { to: '/products', title: 'SUNGLASSES' },
-  { to: '/products', title: 'HOME EYE-TEST' },
   { to: '/products', title: 'STORE LOCATION' },
 ]
 
-// const NavLink = ({ children }) => (
-//   <Link
-//     px={2}
-//     py={1}
-//     rounded={'md'}
-//     _hover={{
-//       textDecoration: 'none',
-//       bg: useColorModeValue('gray.200', 'gray.700'),
-//     }}>
-//     {children}
-//   </Link>
-// );
 
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();

@@ -2,6 +2,7 @@ import React, { useReducer, useEffect, useState } from 'react';
 import { Box, Heading, Grid, GridItem, HStack, VStack, Image, Spinner, SimpleGrid, Center, Text, Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@chakra-ui/react'
 import LeftFilterSection from '../Components/LeftFilterSection';
 import axios from 'axios'
+import ProductCard from '../Components/ProductCard';
 
 
 const initialState = {
@@ -60,7 +61,7 @@ const Products = () => {
         dispatch({ type: "REQUEST" })
         axios.get(url)
             .then((res) => {
-                console.log(res.data)
+                // console.log(res.data)
                 dispatch({ type: "FETCH_SUCCESS", payload: res.data })
             })
             .catch((err) => dispatch({ type: "FETCH_FAILED", payload: err.message }))
@@ -71,11 +72,11 @@ const Products = () => {
         getData('http://localhost:8080/products')
     }, [])
 
-
+    console.log(products)
     return (
         <Box>
             <Box margin={'20px'}>
-                <Breadcrumb>
+                <Breadcrumb fontSize={'sm'}>
                     <BreadcrumbItem>
                         <BreadcrumbLink href='#'>Home</BreadcrumbLink>
                     </BreadcrumbItem>
@@ -87,38 +88,27 @@ const Products = () => {
             </Box>
 
             <Image src='https://static1.lenskart.com/media/desktop/img/Feb23/style/plp/PLP%20Camapaign%20-%20WEB%20(6).jpg' />
-            
-            {
-                loading ? <Spinner /> : ""
-            }
 
             <Box margin={'40px 2px'}>
-                    <Box h={'30px'} border={'1px solid black'} w={'100%'}></Box>
+                <Box h={'30px'} w={'100%'}></Box>
                 <Grid templateColumns={'20% 80%'} >
                     <LeftFilterSection />
+
+                    {
+                        loading ? <Spinner /> : ""
+                    }
+
                     <HStack height='700px' overflow='scroll' alignItems='top' __css={{ '&::-webkit-scrollbar': { display: 'none' } }} >
 
-                        <SimpleGrid className="main_container" style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridGap: "20px" }}>
+                        <Grid style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridGap: "20px" }}>
                             {
-                                products?.map((ele) => {
-                                    return (
-                                        <Box key={ele.id} border={'1px solid #EBEBEB'} padding={'16px'} borderRadius='7px' _hover={{ cursor: "pointer", boxShadow: 'rgba(0, 0, 0, 0.35) 0px 5px 15px' }}>
-                                            <Box>
-                                                <Image src={ele.image} />
-                                            </Box>
-                                            <Box textAlign={'left'}>
-                                                <Heading as='h3' fontSize={'lg'}>{ele.brand}</Heading>
-                                                <Heading as='h3' fontSize={'md'} fontWeight={'light'}>{ele.size}</Heading>
-                                                <Heading as='h3' fontSize={'md'}>Rs. {ele.price}</Heading>
-                                            </Box>
-                                            <Box textAlign={'left'} marginTop={'5px'}>
-                                                <Heading as='h3' fontSize={'sm'} fontWeight={'light'}>BUY 1 GET 1 FREE</Heading>
-                                            </Box>
-                                        </Box>
-                                    );
-                                })
+                                products?.length && products?.map((ele) =>
+                                    <GridItem key={ele.id}>
+                                        <ProductCard data={ele} />
+                                    </GridItem>
+                                )
                             }
-                        </SimpleGrid>
+                        </Grid>
                     </HStack>
                 </Grid>
             </Box>
