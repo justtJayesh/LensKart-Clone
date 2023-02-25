@@ -7,10 +7,9 @@ import { Link as RouterLink, Navigate, useNavigate } from "react-router-dom"
 
 const AddToCart = () => {
     const { cartItem, setCartItem } = useContext(CartContext)
-    const [totalPrice, setTotalPrice] = useState(0)
     const navigate = useNavigate()
-    
     var totalCartPrice = 0
+
     // useEffect(() => {
     //     const items = JSON.parse(localStorage.getItem('items'));
     //     if (items) {
@@ -18,6 +17,11 @@ const AddToCart = () => {
     //     }
     // }, []);
     // console.log(items)
+    const handleCheckout = () =>{
+        if(cartItem.length > 0){
+            navigate('/checkout')
+        }
+    }
 
 
     return (
@@ -78,10 +82,10 @@ const AddToCart = () => {
                                     </HStack>
                                     <HStack justifyContent={'space-between'} margin={'10px 0'}>
                                         <Box>
-                                            <Heading as='h3' fontSize={'medium'} fontWeight={'light'}>Tax</Heading>
+                                            <Heading as='h3' fontSize={'medium'} fontWeight={'light'}>Standard Delivery</Heading>
                                         </Box>
                                         <Box>
-                                            <Heading as='h3' fontSize={'medium'} fontWeight={'light'}>Rs.550</Heading>
+                                            <Heading as='h3' fontSize={'medium'} fontWeight={'light'}>Rs.250</Heading>
                                         </Box>
                                     </HStack>
                                     <HStack justifyContent={'space-between'} marginTop={'10px'}>
@@ -89,12 +93,12 @@ const AddToCart = () => {
                                             <Heading as='h3' fontSize={'lg'} fontWeight={'bold'}>Total Payable</Heading>
                                         </Box>
                                         <Box>
-                                            <Heading as='h3' fontSize={'lg'} fontWeight={'bold'}>Rs.{totalCartPrice + 550}</Heading>
+                                            <Heading as='h3' fontSize={'lg'} fontWeight={'bold'}>Rs.{totalCartPrice + 250}</Heading>
                                         </Box>
                                     </HStack>
                                 </Box>
 
-                                <Button w={'95%'} h={'50px'} borderRadius={'25px'} colorScheme='teal'>Proceed To Checkout</Button>
+                                <Button onClick={handleCheckout} w={'95%'} h={'50px'} borderRadius={'25px'} colorScheme='teal'>Proceed To Checkout</Button>
                             </Box>
                         </Flex>
                     </Box>
