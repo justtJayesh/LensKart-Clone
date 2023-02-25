@@ -3,9 +3,7 @@ import {
   Text,
   Box,
   Flex,
-  Avatar,
   HStack,
-  Link,
   IconButton,
   Button,
   useDisclosure,
@@ -15,13 +13,11 @@ import {
   Heading,
   InputGroup,
   InputLeftElement,
-  textDecoration
 
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon, SearchIcon } from '@chakra-ui/icons';
 import logo from '../Assets/logo.png';
 import { Link as RouterLink, Navigate, useNavigate } from "react-router-dom"
-
 
 
 export default function Navbar() {
@@ -36,13 +32,13 @@ export default function Navbar() {
     { to: '/products', title: 'STORE LOCATION' },
   ]
 
-  const handleClick = () =>{
+  const handleClick = () => {
     navigate(`/addtocart`)
   }
 
   return (
     <Box bgColor={'white'} w={'100%'}>
-      <Box  px={4}>
+      <Box px={4}>
         <Flex h={"80px"} alignItems={'center'} justifyContent={'space-between'}>
           <IconButton
             size={'md'}
@@ -70,11 +66,12 @@ export default function Navbar() {
               </InputGroup>
             </Box>
 
-            <Box  w={320} justifyContent={'space-evenly'}>
+            <Box w={520} justifyContent={'space-evenly'}>
               <Flex justifyContent={'space-evenly'}>
                 <Text _hover={{ cursor: 'pointer' }}>Track Order</Text>
                 <Text _hover={{ cursor: 'pointer' }}>Sign In</Text>
-                <Text _hover={{ cursor: 'pointer' }} onClick={handleClick}>Cart</Text>
+                <Box></Box>
+                <Text _hover={{ cursor: 'pointer' }} onClick={handleClick}> Cart</Text>
               </Flex>
 
             </Box>

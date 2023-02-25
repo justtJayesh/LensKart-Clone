@@ -81,7 +81,7 @@ const Checkout = () => {
                                 <FormLabel as='legend'>Gender</FormLabel>
                                 <RadioGroup defaultValue='Itachi'>
                                     <HStack spacing='24px'>
-                                        <Radio value='Sasuke'>Male</Radio>
+                                        <Radio defaultChecked value='Sasuke'>Male</Radio>
                                         <Radio value='Nagato'>Female</Radio>
                                     </HStack>
                                 </RadioGroup>
@@ -117,10 +117,10 @@ const Checkout = () => {
                                 </Select>
                             </HStack>
                             <Box>
-                                <Button onClick={onOpen} colorScheme='teal' type='submit' w={'300px'}>Continue</Button>
+                                <Button onClick={onOpen} colorScheme='teal' type='submit' w={'300px'}>Place Order</Button>
                                 <Modal onClose={onClose} isOpen={isOpen} isCentered>
                                     <ModalOverlay />
-                                    <ModalContent>
+                                    <ModalContent padding={7}>
                                         <ModalCloseButton />
                                         <ModalBody>
                                             <Heading>Order SuccessFully Placed 🎉</Heading>
@@ -143,7 +143,7 @@ const Checkout = () => {
                     <VStack>
                         {
                             cartItem?.map((el) => {
-                                subTotal += el.price
+                                subTotal += Number(el.price)
                                 return (
                                     <>
                                         <Box display={'flex'} justifyContent={'space-evenly'} alignItems={'center'} w='100%'>
