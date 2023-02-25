@@ -72,7 +72,7 @@ export default function Navbar() {
 
             <Box  w={320} justifyContent={'space-evenly'}>
               <Flex justifyContent={'space-evenly'}>
-                <Text _hover={{ cursor: 'pointer' }}>Sign up</Text>
+                <Text _hover={{ cursor: 'pointer' }}>Track Order</Text>
                 <Text _hover={{ cursor: 'pointer' }}>Sign In</Text>
                 <Text _hover={{ cursor: 'pointer' }} onClick={handleClick}>Cart</Text>
               </Flex>

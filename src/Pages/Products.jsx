@@ -3,7 +3,8 @@ import { Box, Heading, Grid, GridItem, HStack, VStack, Image, Spinner, SimpleGri
 import LeftFilterSection from '../Components/LeftFilterSection';
 import axios from 'axios'
 import ProductCard from '../Components/ProductCard';
-
+import Navbar from '../Components/Navbar';
+import Footer from '../Components/Footer';
 
 const initialState = {
     data: [],
@@ -72,50 +73,54 @@ const Products = () => {
         getData('http://localhost:8080/products')
     }, [])
 
-    console.log(products)
+    // console.log(products)
     return (
+        <>
+            <Navbar />
 
-        <Box>
-            <Box margin={'20px'}>
-                <Breadcrumb fontSize={'sm'}>
-                    <BreadcrumbItem>
-                        <BreadcrumbLink href='#'>Home</BreadcrumbLink>
-                    </BreadcrumbItem>
+            <Box>
+                <Box margin={'20px'}>
+                    <Breadcrumb fontSize={'sm'}>
+                        <BreadcrumbItem>
+                            <BreadcrumbLink href='#'>Home</BreadcrumbLink>
+                        </BreadcrumbItem>
 
-                    <BreadcrumbItem>
-                        <BreadcrumbLink href='#'>Eyeglasses</BreadcrumbLink>
-                    </BreadcrumbItem>
-                </Breadcrumb>
+                        <BreadcrumbItem>
+                            <BreadcrumbLink href='#'>Eyeglasses</BreadcrumbLink>
+                        </BreadcrumbItem>
+                    </Breadcrumb>
+                </Box>
+
+                <Image src='https://static1.lenskart.com/media/desktop/img/Feb23/style/plp/PLP%20Camapaign%20-%20WEB%20(6).jpg' />
+                <Center>
+                    <Box margin={'40px 2px'} w={'95%'}>
+                        <Box h={'30px'} w={'100%'}></Box>
+                        <Grid templateColumns={'20% 80%'} >
+                            <LeftFilterSection />
+
+                            {
+                                loading ? <Spinner /> : ""
+                            }
+
+                            <HStack height='700px' overflow='scroll' alignItems='top' __css={{ '&::-webkit-scrollbar': { display: 'none' } }} >
+
+                                <Grid style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridGap: "20px" }}>
+                                    {
+                                        products?.length && products?.map((ele) =>
+                                            <GridItem key={ele.id}>
+                                                <ProductCard data={ele} />
+                                            </GridItem>
+                                        )
+                                    }
+                                </Grid>
+                            </HStack>
+                        </Grid>
+                    </Box>
+                </Center>
             </Box>
 
-            <Image src='https://static1.lenskart.com/media/desktop/img/Feb23/style/plp/PLP%20Camapaign%20-%20WEB%20(6).jpg' />
-            <Center>
-                <Box margin={'40px 2px'} w={'95%'}>
-                    <Box h={'30px'} w={'100%'}></Box>
-                    <Grid templateColumns={'20% 80%'} >
-                        <LeftFilterSection />
-
-                        {
-                            loading ? <Spinner /> : ""
-                        }
-
-                        <HStack height='700px' overflow='scroll' alignItems='top' __css={{ '&::-webkit-scrollbar': { display: 'none' } }} >
-
-                            <Grid style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gridGap: "20px" }}>
-                                {
-                                    products?.length && products?.map((ele) =>
-                                        <GridItem key={ele.id}>
-                                            <ProductCard data={ele} />
-                                        </GridItem>
-                                    )
-                                }
-                            </Grid>
-                        </HStack>
-                    </Grid>
-                </Box>
-            </Center>
-        </Box>
-
+            <Footer />
+        </>
     );
 
 }
