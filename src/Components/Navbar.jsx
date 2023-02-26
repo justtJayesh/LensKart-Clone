@@ -37,7 +37,7 @@ import { AuthContext } from '../Context/AuthContext'
 
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const { isAuth, setIsAuth, logout, login } = useContext(AuthContext)
+  const { isAuth, setIsAuth, logout, login, name } = useContext(AuthContext)
   const navigate = useNavigate()
 
   const Links = [
@@ -94,7 +94,7 @@ export default function Navbar() {
                   {
                     !isAuth ? <Text onClick={()=>navigate('/signup')} _hover={{cursor:"pointer"}}>Sign up</Text> :
                       <Menu isLazy>
-                        <MenuButton>Jayesh</MenuButton>
+                        <MenuButton>{name}</MenuButton>
                         <MenuList>
                           {/* MenuItems are not rendered unless Menu is open */}
                           <MenuItem>My Account</MenuItem>

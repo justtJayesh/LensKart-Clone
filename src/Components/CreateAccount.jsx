@@ -4,6 +4,7 @@ import { Box, VStack, Center, Image, Input, InputGroup, InputLeftAddon, InputRig
 const CreateAccount = () => {
     const [show, setShow] = React.useState(false)
     const handleClick = () => setShow(!show)
+
     return (
         <>
             <Center marginTop={'40px'}>

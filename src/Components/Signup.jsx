@@ -28,7 +28,16 @@ import { AuthContext } from '../Context/AuthContext';
 const Signup = () => {
     const { isAuth, login, logout } = useContext(AuthContext)
     const { isOpen, onOpen, onClose } = useDisclosure()
+    const [num, setNum] = useState(null)
     const navigate = useNavigate()
+
+    const handleSignIn = (num) => {
+        console.log(num)
+        login(num)
+    }
+    const handleChange = (e) =>{
+        setNum(e.target.value)
+    }
 
     return (
         <>
@@ -45,7 +54,7 @@ const Signup = () => {
                                 <Heading>Sign Up</Heading>
                             </Box>
                             <Box w={'80%'}>
-                                <Input placeholder='Mobile/Email' />
+                                <Input placeholder='Mobile/Email' onChange={handleChange} />
                             </Box>
                             <Box w={'80%'}>
 
@@ -54,7 +63,7 @@ const Signup = () => {
                                 </Box>
                             </Box>
                             <Box w={'80%'}>
-                                <Button colorScheme={'teal'} w={'100%'} borderRadius='25px' onClick={()=>login()}>Sign In</Button>
+                                <Button colorScheme={'teal'} w={'100%'} borderRadius='25px' onClick={handleSignIn}>Sign In</Button>
                             </Box>
                             <Box w={'80%'}>
                                 <HStack>
