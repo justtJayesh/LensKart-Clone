@@ -52,9 +52,9 @@ export default function Navbar() {
     navigate(`/addtocart`)
   }
 
-  const handleSignIn = () => {
-    setIsAuth(!isAuth)
-  }
+  // const handleSignIn = () => {
+  //   setIsAuth(!isAuth)
+  // }
 
 
   return (
@@ -112,7 +112,7 @@ export default function Navbar() {
         </Flex>
       </Box>
 
-      <Box bg={'#FCF9F7'} p={3} w={'100%'}>
+      <Box bg={'#FCF9F7'} p={4} w={'100%'}>
         <HStack
           as={'nav'}
           spacing={8}

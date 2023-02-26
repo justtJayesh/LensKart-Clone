@@ -85,32 +85,3 @@ const Signup = () => {
 }
 
 export default Signup
-
-
-// <Modal isOpen={isOpen} onClose={onClose}>
-            //       <ModalOverlay />
-            //       <ModalContent  padding={6} width='370px' borderRadius={10} boxShadow='rgba(9, 30, 66, 0.25) 0px 4px 8px -2px, rgba(9, 30, 66, 0.08) 0px 0px 0px 1px'>
-            //         <ModalHeader>
-            //           <Image src='https://static1.lenskart.com/media/desktop/img/DesignStudioIcons/DesktopLoginImage.svg' />
-            //         </ModalHeader>
-            //         <ModalCloseButton />
-
-            //         <ModalBody>
-            //           <Heading as='h3' fontSize={'2xl'} fontWeight={'semibold'}>Sign In</Heading>
-            //           <Box>
-            //             <Input placeholder='Mobile number'/>
-            //             <Checkbox>Get Update on Whatsapp</Checkbox>
-            //           </Box>
-            //         </ModalBody>
-
-            //         <ModalFooter>
-            //           <Button colorScheme='blue' mr={3}>
-            //             SignIn
-            //           </Button>
-            //         </ModalFooter>
-            //         <Box p={'5px 25px'}>
-            //           <Text>New Member? </Text>
-            //         </Box>
-            //         <Box h={5}></Box>
-            //       </ModalContent>
-            //     </Modal>

@@ -19,7 +19,6 @@ const AuthContextProvider = ({children}) => {
         .then((res)=>{
             res.data?.map((user)=>{
                 if(user.number == 9876543210){
-                    
                     setName(user.fname)
                     navigate('/')
                 }else{
@@ -33,12 +32,11 @@ const AuthContextProvider = ({children}) => {
         
     }
     
-    
-    
     const logout = () => {
         setIsAuth(false)
         navigate('/')
     }
+
     return <AuthContext.Provider value={{isAuth, setIsAuth, login, logout, name}}>{children}</AuthContext.Provider>
 
 }
