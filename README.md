@@ -12,7 +12,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 5. npm start
 6. To Visit App:
 **http://localhost:3000/**
-7.npm run server
+7. npm run server
 8. To Visit App:
 **http://localhost:8080/**
 
