@@ -4,9 +4,11 @@ import CartCard from '../Components/CartCard';
 import { CartContext } from '../Context/CartContext';
 import logo from '../Assets/logo.png'
 import { Link as RouterLink, Navigate, useNavigate } from "react-router-dom"
+import { AuthContext } from '../Context/AuthContext';
 
 const AddToCart = () => {
     const { cartItem, setCartItem } = useContext(CartContext)
+    const {isAuth} = useContext(AuthContext)
     const navigate = useNavigate()
     var totalCartPrice = 0
 
@@ -18,8 +20,10 @@ const AddToCart = () => {
     // }, []);
     // console.log(items)
     const handleCheckout = () =>{
-        if(cartItem.length > 0){
+        if(cartItem.length > 0 && isAuth === true){
             navigate('/checkout')
+        }else{
+            navigate('/signup')
         }
     }
 

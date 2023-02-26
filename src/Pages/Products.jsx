@@ -1,5 +1,5 @@
 import React, { useReducer, useEffect, useState } from 'react';
-import { Box, Heading, Grid, GridItem, HStack, VStack, Image, Spinner, SimpleGrid, Center, Text, Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@chakra-ui/react'
+import { Box, Heading, Grid, GridItem, HStack, VStack, Image, Spinner, SimpleGrid, Center, Text, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Select } from '@chakra-ui/react'
 import LeftFilterSection from '../Components/LeftFilterSection';
 import axios from 'axios'
 import ProductCard from '../Components/ProductCard';
@@ -73,6 +73,11 @@ const Products = () => {
         getData('http://localhost:8080/products')
     }, [])
 
+    const handleSortChange = (e) =>{
+        let sortType = e.target.value;
+        getData(`http://localhost:8080/products?_sort=price&_order=${sortType}`)
+    }
+
     // console.log(products)
     return (
         <>
@@ -92,8 +97,21 @@ const Products = () => {
                 </Box>
 
                 <Image src='https://static1.lenskart.com/media/desktop/img/Feb23/style/plp/PLP%20Camapaign%20-%20WEB%20(6).jpg' />
+
+                <Box h={10} marginBottom={'2px'} marginTop={'20px'} padding={'0 40px'}>
+                    <HStack justifyContent={'space-between'}>
+                    <Box></Box>
+                    <Box w={200}>
+                        <Select placeholder='Sort' size={'sm'} onChange={handleSortChange}>
+                            <option value='asc'>Price: low to high</option>
+                            <option value='desc'>Price: high to low</option>
+                        </Select>
+                    </Box>
+                    </HStack>
+                </Box>
+
                 <Center>
-                    <Box margin={'40px 2px'} w={'95%'}>
+                    <Box w={'95%'}>
                         <Box h={'30px'} w={'100%'}></Box>
                         <Grid templateColumns={'20% 80%'} >
                             <LeftFilterSection />

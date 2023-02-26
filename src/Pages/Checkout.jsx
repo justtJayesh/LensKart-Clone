@@ -105,13 +105,13 @@ const Checkout = () => {
                                 <Input placeholder='City / District*' />
                             </HStack>
                             <HStack>
-                                <Select variant='outline' placeholder='India'>
-                                    <option value='option1'>Option 1</option>
-                                    <option value='option2'>Option 2</option>
-                                    <option value='option3'>Option 3</option>
+                                <Select variant='outline' placeholder='INDIA'>
+                                    <option value='option1'>UAE</option>
+                                    <option value='option2'>ENGLAND</option>
+                                    <option value='option3'>RUSSIA</option>
                                 </Select>
                                 <Select variant='outline' placeholder='State'>
-                                    <option value='option1'>Option 1</option>
+                                    <option value='option1'>MAHARASHTRA</option>
                                     <option value='option2'>Option 2</option>
                                     <option value='option3'>Option 3</option>
                                 </Select>

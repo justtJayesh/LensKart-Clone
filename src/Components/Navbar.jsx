@@ -13,15 +13,31 @@ import {
   Heading,
   InputGroup,
   InputLeftElement,
-
+  Menu,
+  MenuButton,
+  MenuList,
+  MenuItem,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  Checkbox,
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon, SearchIcon } from '@chakra-ui/icons';
 import logo from '../Assets/logo.png';
 import { Link as RouterLink, Navigate, useNavigate } from "react-router-dom"
+import { useContext, useState } from 'react';
+import { AuthContext } from '../Context/AuthContext'
+
+
 
 
 export default function Navbar() {
   const { isOpen, onOpen, onClose } = useDisclosure();
+  const { isAuth, setIsAuth, logout, login } = useContext(AuthContext)
   const navigate = useNavigate()
 
   const Links = [
@@ -32,9 +48,14 @@ export default function Navbar() {
     { to: '/products', title: 'STORE LOCATION' },
   ]
 
-  const handleClick = () => {
+  const handleCartClick = () => {
     navigate(`/addtocart`)
   }
+
+  const handleSignIn = () => {
+    setIsAuth(!isAuth)
+  }
+
 
   return (
     <Box bgColor={'white'} w={'100%'}>
@@ -69,9 +90,21 @@ export default function Navbar() {
             <Box w={520} justifyContent={'space-evenly'}>
               <Flex justifyContent={'space-evenly'}>
                 <Text _hover={{ cursor: 'pointer' }}>Track Order</Text>
-                <Text _hover={{ cursor: 'pointer' }}>Sign In</Text>
-                <Box></Box>
-                <Text _hover={{ cursor: 'pointer' }} onClick={handleClick}> Cart</Text>
+                <Box _hover={{ cursor: 'pointer' }}>
+                  {
+                    !isAuth ? <Text onClick={()=>navigate('/signup')} _hover={{cursor:"pointer"}}>Sign up</Text> :
+                      <Menu isLazy>
+                        <MenuButton>Jayesh</MenuButton>
+                        <MenuList>
+                          {/* MenuItems are not rendered unless Menu is open */}
+                          <MenuItem>My Account</MenuItem>
+                          <MenuItem>Orders</MenuItem>
+                          <MenuItem onClick={()=>logout()}>Logout</MenuItem>
+                        </MenuList>
+                      </Menu>
+                  }
+                </Box>
+                <Text _hover={{ cursor: 'pointer' }} onClick={handleCartClick}>Cart</Text>
               </Flex>
 
             </Box>
