@@ -58,7 +58,7 @@ export default function Navbar() {
 
 
   return (
-    <Box bgColor={'white'} w={'100%'}>
+    <Box bgColor={'white'} w={'100%'} position={'sticky'} top={0} zIndex={'banner'}>
       <Box px={4}>
         <Flex h={"80px"} alignItems={'center'} justifyContent={'space-between'}>
           <IconButton
