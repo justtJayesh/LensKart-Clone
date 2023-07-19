@@ -1,44 +1,57 @@
-import axios from 'axios';
-import React, { createContext, useState } from 'react';
-import { Navigate,useNavigate } from 'react-router-dom';
+import { useToast } from "@chakra-ui/react";
+import axios from "axios";
+import React, { createContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
-export const AuthContext = createContext()
+export const AuthContext = createContext();
 
-const AuthContextProvider = ({children}) => {
-    const [isAuth, setIsAuth] = useState(false)
-    const [name, setName] = useState('')
-    // const [userData, setUserData] = useState([])
-    const navigate = useNavigate()
+const AuthContextProvider = ({ children }) => {
+    const [isAuth, setIsAuth] = useState(false);
+    const [currentLogin, setCurrentLogin] = useState("");
+    const [users, setUser] = useState([]);
+    const navigate = useNavigate();
+    const toast = useToast();
 
-    const login = (num) =>{
-        // console.log(num.target)
-        setIsAuth(true)
-        // navigate('/')
+    const login = (input) => {
+        const user = users.find((user) => user.email === input.toLowerCase());
+        if (user) {
+            setCurrentLogin(user.fname);
+            setIsAuth(true);
+            navigate("/");
+        } else {
+            toast({ description: "some text", status: "warning" });
+        }
+    };
 
-        axios.get(`http://localhost:8080/users`)
-        .then((res)=>{
-            res.data?.map((user)=>{
-                if(user.number == 9876543210){
-                    setName(user.fname)
-                    navigate('/')
-                }else{
-                    alert(`Please Create new Account`)
-                    navigate('/createaccount')
-                }
-    
-            })
-        })
-
-        
-    }
-    
     const logout = () => {
-        setIsAuth(false)
-        navigate('/')
-    }
+        setIsAuth(false);
+        navigate("/");
+    };
 
-    return <AuthContext.Provider value={{isAuth, setIsAuth, login, logout, name}}>{children}</AuthContext.Provider>
+    const signup = (userData) => {
+        setUser((prev) => [...prev, userData]);
+    };
 
-}
+    const value = {
+        isAuth,
+        setIsAuth,
+        login,
+        logout,
+        users,
+        signup,
+        currentLogin,
+    };
 
-export default AuthContextProvider
+    useEffect(() => {
+        axios
+            .get("https://lenskart-backend-ia3u.onrender.com/users")
+            .then((res) => setUser(res.data))
+            .catch((err) => alert(err));
+    }, []);
+
+    return (
+        <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
+    );
+};
+
+export default AuthContextProvider;

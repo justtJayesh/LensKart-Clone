@@ -28,7 +28,7 @@ const SingleProduct = () => {
     }
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/products/${id}`)
+        axios.get(`https://lenskart-backend-ia3u.onrender.com/products/${id}`)
             .then((res) => setProductItem(res.data))
     }, [])
 

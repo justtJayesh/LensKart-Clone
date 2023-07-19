@@ -70,12 +70,12 @@ const Products = () => {
     }
 
     useEffect(() => {
-        getData('http://localhost:8080/products')
+        getData('https://lenskart-backend-ia3u.onrender.com/products')
     }, [])
 
     const handleSortChange = (e) => {
         let sortType = e.target.value;
-        getData(`http://localhost:8080/products?_sort=price&_order=${sortType}`)
+        getData(`https://lenskart-backend-ia3u.onrender.com/products?_sort=price&_order=${sortType}`)
     }
 
     // console.log(products)

@@ -1,13 +1,13 @@
 import React from 'react';
 import {Routes, Route} from 'react-router-dom'
-import AddToCart from '../Pages/AddToCart';
-import Checkout from '../Pages/Checkout';
-import Home from '../Pages/Home';
-import NotFound from '../Pages/NotFound';
-import Products from '../Pages/Products';
-import SingleProduct from '../Pages/SingleProduct';
-import CreateAccount from './CreateAccount';
-import Signup from './Signup';
+import AddToCart from './AddToCart';
+import Checkout from './Checkout';
+import Home from './Home';
+import NotFound from './NotFound';
+import Products from './Products';
+import SingleProduct from './SingleProduct';
+import CreateAccount from '../Components/CreateAccount';
+import Signup from '../Components/Signup';
 
 
 
