@@ -19,6 +19,7 @@ import {
     VStack,
     HStack,
     FormControl,
+    FormHelperText,
 } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../Context/AuthContext";
@@ -58,6 +59,9 @@ const Signup = () => {
                                         setUserInput(e.target.value)
                                     }
                                 />
+                                <FormHelperText>
+                                    Enter exact email.
+                                </FormHelperText>
                             </Box>
                             <Box w={"80%"}>
                                 <Box w={"fit-content"}>
