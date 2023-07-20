@@ -13,7 +13,7 @@ const AuthContextProvider = ({ children }) => {
     const toast = useToast();
 
     const login = (input) => {
-        const user = users.find((user) => user.email === input.toLowerCase());
+        const user = users.find((user) => user.email === input);
         if (user) {
             setCurrentLogin(user.fname);
             setIsAuth(true);

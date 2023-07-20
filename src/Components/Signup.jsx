@@ -53,7 +53,7 @@ const Signup = () => {
                             <Box w={"80%"}>
                                 <Input
                                     value={userInput}
-                                    placeholder="Mobile/Email"
+                                    placeholder="Email"
                                     onChange={(e) =>
                                         setUserInput(e.target.value)
                                     }
