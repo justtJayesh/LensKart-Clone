@@ -54,13 +54,13 @@ const Signup = () => {
                             <Box w={"80%"}>
                                 <Input
                                     value={userInput}
-                                    placeholder="Email"
+                                    placeholder="Email ID"
                                     onChange={(e) =>
                                         setUserInput(e.target.value)
                                     }
                                 />
-                                <FormHelperText>
-                                    Enter exact email.
+                                <FormHelperText textAlign={"left"} paddingLeft={'15px'}>
+                                    Enter exact Email ID*.
                                 </FormHelperText>
                             </Box>
                             <Box w={"80%"}>
