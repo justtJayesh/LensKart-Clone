@@ -17,7 +17,9 @@ const AuthContextProvider = ({ children }) => {
         if (user) {
             setCurrentLogin(user.fname);
             setIsAuth(true);
-            navigate("/");
+            setTimeout(() => {
+                navigate("/");
+            }, 2000);
         } else {
             toast({ description: "some text", status: "warning" });
         }
