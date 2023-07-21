@@ -18,7 +18,6 @@ import {
 import Navbar from "../Components/Navbar";
 import Footer from "../Components/Footer";
 
-
 const Home = () => {
     return (
         <>
@@ -31,8 +30,19 @@ const Home = () => {
                 <Image src="https://static1.lenskart.com/media/desktop/img/Feb23/23feb/PREMIUM%20BRANDS%20WEB.jpg" />
                 <Box paddingTop={"5px"}></Box>
                 <Box padding={"40px"}>
-                    <Flex>
-                        <Box h={200} w={234} textAlign={"left"}>
+                    <Flex direction={{ lg: "row", md: "row", sm: "column" }}>
+                        <Box
+                            h={200}
+                            w={234}
+                            textAlign={{
+                                lg: "left",
+                                md: "center",
+                                sm: "center",
+                                base: "center",
+                            }}
+                            margin={"auto"}
+                            // border={"1px solid red"}
+                        >
                             <Heading as="h2" size={"2xl"} paddingTop={"25px"}>
                                 Wear The Trend
                             </Heading>
@@ -44,6 +54,12 @@ const Home = () => {
                             w={"90%"}
                             textAlign={"left"}
                             // border={"1px solid black"}
+                            display={{
+                                lg: "contents",
+                                md: "none",
+                                sm: "none",
+                                base: "none",
+                            }}
                         >
                             <HStack justifyContent={"space-evenly"}>
                                 <VStack>
@@ -179,22 +195,22 @@ const Home = () => {
                         templateRows="repeat(3,1fr)"
                         templateColumns={"repeat(2,1fr)"}
                         gap={4}
-                        // border={'1px solid black'}
+                        border={"2px solid red"}
                         margin={"auto"}
                     >
-                        <GridItem rowSpan={2} colSpan={1}>
+                        <GridItem rowSpan={2} colSpan={1} h={"fit-content"}>
                             <Image src="https://static1.lenskart.com/media/desktop/img/Aug21/Desktop/eye-square10.jpg" />
                         </GridItem>
-                        <GridItem>
+                        <GridItem h={"fit-content"}>
                             <Image src="https://static1.lenskart.com/media/desktop/img/Aug21/Desktop/ce-square.jpg" />
                         </GridItem>
-                        <GridItem>
+                        <GridItem h={"fit-content"}>
                             <Image src="https://static1.lenskart.com/media/desktop/img/Aug21/Desktop/sun-square.jpg" />
                         </GridItem>
-                        <GridItem>
+                        <GridItem h={"fit-content"}>
                             <Image src="https://static1.lenskart.com/media/desktop/img/Aug21/Desktop/power-sun-square.jpg" />
                         </GridItem>
-                        <GridItem>
+                        <GridItem h={"fit-content"}>
                             <Image src="https://static1.lenskart.com/media/desktop/img/Nov20/25-Nov/Banner03_TileDesktop.jpg" />
                         </GridItem>
                     </Grid>

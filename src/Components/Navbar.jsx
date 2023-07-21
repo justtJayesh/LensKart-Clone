@@ -84,10 +84,16 @@ export default function Navbar() {
                                 onClick={() => navigate("/")}
                                 _hover={{ cursor: "pointer" }}
                             >
-                                <Image src={logo} w="md" />
+                                <Image
+                                    src={logo}
+                                    w={{ lg: "md", md: "md", sm: "md" }}
+                                />
                             </HStack>
                         </Box>
-                        <Box w={"80%"}>
+                        <Box
+                            w={"80%"}
+                            display={{ sm: "none", md: "none", lg: "block" }}
+                        >
                             <InputGroup>
                                 <InputLeftElement
                                     pointerEvents="none"
@@ -101,11 +107,16 @@ export default function Navbar() {
                             </InputGroup>
                         </Box>
 
-                        <Box w={520} justifyContent={"space-evenly"}>
+                        <Box
+                            w={{ lg: "520px", md: "100%", sm: "100%" }}
+                            justifyContent={"space-evenly"}
+                        >
                             <Flex justifyContent={"space-evenly"}>
-                                <Text _hover={{ cursor: "pointer" }}>
-                                    Track Order
-                                </Text>
+                                <Box>
+                                    <Text _hover={{ cursor: "pointer" }}>
+                                        Track Order
+                                    </Text>
+                                </Box>
                                 <Box _hover={{ cursor: "pointer" }}>
                                     {!isAuth ? (
                                         <Text
