@@ -16,19 +16,19 @@ import { FilterContext } from "../Context/FilterContext";
 const LeftFilterSection = () => {
     const { filterValue, setFilterValue } = useContext(FilterContext);
 
-    const handleChangeFilter = (value) => {
-        if (filterValue.include(value)) {
-            setFilterValue(filterValue.filter((filter) => filter !== value));
-        } else {
-            setFilterValue([...filterValue, value]);
-        }
-    };
+    // const handleChangeFilter = (value) => {
+    //     if (filterValue.include(value)) {
+    //         setFilterValue(filterValue.filter((filter) => filter !== value));
+    //     } else {
+    //         setFilterValue([...filterValue, value]);
+    //     }
+    // };
 
-    console.log(filterValue);
+    // console.log(filterValue);
     return (
         <Box>
             <VStack>
-                <Box>
+                {/* <Box>
                     <Heading
                         as="h4"
                         size={"md"}
@@ -130,7 +130,7 @@ const LeftFilterSection = () => {
                             </Checkbox>
                         </VStack>
                     </Box>
-                </Box>
+                </Box> */}
                 <Box h={1}></Box>
                 <Box>
                     <Heading
