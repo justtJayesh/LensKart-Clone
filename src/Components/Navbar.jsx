@@ -86,13 +86,23 @@ export default function Navbar() {
                             >
                                 <Image
                                     src={logo}
-                                    w={{ lg: "md", md: "md", sm: "md" }}
+                                    w={{
+                                        lg: "md",
+                                        md: "md",
+                                        sm: "md",
+                                        base: "md",
+                                    }}
                                 />
                             </HStack>
                         </Box>
                         <Box
                             w={"80%"}
-                            display={{ sm: "none", md: "none", lg: "block" }}
+                            display={{
+                                base: "none",
+                                sm: "none",
+                                md: "none",
+                                lg: "block",
+                            }}
                         >
                             <InputGroup>
                                 <InputLeftElement
@@ -108,7 +118,12 @@ export default function Navbar() {
                         </Box>
 
                         <Box
-                            w={{ lg: "520px", md: "100%", sm: "100%" }}
+                            w={{
+                                lg: "520px",
+                                md: "100%",
+                                sm: "100%",
+                                base: "100%",
+                            }}
                             justifyContent={"space-evenly"}
                         >
                             <Flex justifyContent={"space-evenly"}>

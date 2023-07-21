@@ -195,7 +195,7 @@ const Home = () => {
                         templateRows="repeat(3,1fr)"
                         templateColumns={"repeat(2,1fr)"}
                         gap={4}
-                        border={"2px solid red"}
+                        // border={"2px solid red"}
                         margin={"auto"}
                     >
                         <GridItem rowSpan={2} colSpan={1} h={"fit-content"}>
