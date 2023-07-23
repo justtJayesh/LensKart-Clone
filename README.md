@@ -18,5 +18,7 @@ As of now the platform has over 5,000 styles of frames and a range of different 
 
 1. Auth Login / Sign up
 2. User can buy product online
-3. JSON server
-4. Sorting / Filtering 
+3. Responsiveness
+4. JSON server
+5. Sorting / Filtering
+6. Appealing UI
