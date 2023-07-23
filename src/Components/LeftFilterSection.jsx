@@ -26,7 +26,14 @@ const LeftFilterSection = () => {
 
     // console.log(filterValue);
     return (
-        <Box>
+        <Box
+            display={{
+                lg: "contents",
+                md: "none",
+                sm: "none",
+                base: "none",
+            }}
+        >
             <VStack>
                 {/* <Box>
                     <Heading

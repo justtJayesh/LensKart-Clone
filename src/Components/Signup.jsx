@@ -38,7 +38,11 @@ const Signup = () => {
     return (
         <>
             <Center marginTop={"140px"}>
-                <Box border={"1px solid grey"} w="472px" borderRadius={"12px"}>
+                <Box
+                    border={"1px solid grey"}
+                    w={{ lg: "472px", md: "460px", sm: "400px", base: "400px" }}
+                    borderRadius={"12px"}
+                >
                     <FormControl>
                         <VStack spacing={4}>
                             <Box>
@@ -59,7 +63,10 @@ const Signup = () => {
                                         setUserInput(e.target.value)
                                     }
                                 />
-                                <FormHelperText textAlign={"left"} paddingLeft={'15px'}>
+                                <FormHelperText
+                                    textAlign={"left"}
+                                    paddingLeft={"15px"}
+                                >
                                     Enter exact Email ID*.
                                 </FormHelperText>
                             </Box>

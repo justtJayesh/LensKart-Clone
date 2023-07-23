@@ -67,7 +67,11 @@ const CreateAccount = () => {
     return (
         <>
             <Center marginTop={"40px"}>
-                <Box border={"1px solid grey"} w="472px" borderRadius={"12px"}>
+                <Box
+                    border={"1px solid grey"}
+                    w={{ lg: "472px", md: "460px", sm: "400px", base: "400px" }}
+                    borderRadius={"12px"}
+                >
                     <form onSubmit={handleCreateAccount}>
                         <VStack spacing={4}>
                             <Box>
@@ -160,6 +164,16 @@ const CreateAccount = () => {
                                     borderRadius="25px"
                                 >
                                     Create Account
+                                </Button>
+                            </Box>
+                            <Box display={"flex"} gap={2}>
+                                <Text>Already have an account. </Text>
+                                <Button
+                                    variant={"link"}
+                                    color={"blue.300"}
+                                    onClick={() => navigate("/signup")}
+                                >
+                                    Login
                                 </Button>
                             </Box>
                             <Box h={5}></Box>

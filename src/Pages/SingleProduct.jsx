@@ -113,19 +113,46 @@ const SingleProduct = () => {
                     </Box>
 
                     <Box w={"95%"} margin={"auto"} padding={"5px"}>
-                        <Box display={"flex"}>
-                            <Box w={"940px"}>
+                        <Box
+                            display={"flex"}
+                            flexDirection={{
+                                lg: "row",
+                                md: "column",
+                                sm: "column",
+                                base: "column",
+                            }}
+                        >
+                            <Box
+                                w={{ lg: "940px", md: "800px", sm: "90%" }}
+                                // border={"1px solid black"}
+                            >
                                 <Grid
-                                    templateColumns={"repeat(2, 1fr)"}
+                                    templateColumns={{
+                                        lg: "repeat(2, 1fr)",
+                                        md: "repeat(2, 1fr)",
+                                        sm: "repeat(1, 1fr)",
+                                        base: "repeat(1, 1fr)",
+                                    }}
                                     gap={5}
                                 >
                                     {productImages?.map((image) => (
                                         <Box
-                                            h={"456px"}
-                                            w={"456px"}
+                                            margin={"auto"}
+                                            h={{
+                                                lg: "456px",
+                                                md: "380px",
+                                                sm: "380px",
+                                                base: "380px",
+                                            }}
+                                            w={{
+                                                lg: "456px",
+                                                md: "380px",
+                                                sm: "380px",
+                                                base: "380px",
+                                            }}
                                             border={"1px solid #eeeeee"}
                                         >
-                                            <Image src={image} />
+                                            <Image src={image} alt="" />
                                         </Box>
                                     ))}
                                 </Grid>
