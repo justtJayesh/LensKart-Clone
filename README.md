@@ -1,22 +1,5 @@
 # LensKart Clone
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-## Getting Started:
-
-1. Fork this repository [https://github.com/justtJayesh/debonair-surprise-3863](https://github.com/justtJayesh/debonair-surprise-3863)
-2. Clone the Forked repository.
-   - **_Note_**: This Clone repository should be on your github account.
-3. navigate to the folder `debonair-surprise-3863`
-4. npm install
-5. npm start
-6. To Visit App:
-**http://localhost:3000/**
-7. npm run server
-8. To Visit App:
-**http://localhost:8080/**
-
-
 ## Project Details: 
 
 LensCraft is an e-commerce platform which specialises in eyewear accessories. The platform operates in both online and offline distribution modes, offering its customers the liberty to purchase products either online or through their exclusive offline stores. The company facilitates a range of services such as home eye checkups. Lenskart recently earned the unicorn company status towards the end of 2019. 
@@ -35,5 +18,7 @@ As of now the platform has over 5,000 styles of frames and a range of different 
 
 1. Auth Login / Sign up
 2. User can buy product online
-3. JSON server
-4. Sorting / Filtering 
+3. Responsiveness
+4. JSON server
+5. Sorting / Filtering
+6. Appealing UI
