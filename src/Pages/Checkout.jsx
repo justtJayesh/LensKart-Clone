@@ -26,6 +26,7 @@ import {
     ModalCloseButton,
     ModalBody,
     ModalFooter,
+    useToast,
 } from "@chakra-ui/react";
 import React, { useContext, useState } from "react";
 import logo from "../Assets/logo.png";
@@ -33,13 +34,54 @@ import { Link as RouterLink, Navigate, useNavigate } from "react-router-dom";
 import { CartContext } from "../Context/CartContext";
 import { MinusIcon, AddIcon } from "@chakra-ui/icons";
 
+const initialState = {
+    fname: "",
+    lname: "",
+    gender: "",
+    phoneNumber: "",
+    email: "",
+    address: "",
+    zip: "",
+    city: "",
+    country: "",
+    state: "",
+};
+
 const Checkout = () => {
+    const toast = useToast();
     const { isOpen, onOpen, onClose } = useDisclosure();
     const { cartItem, setCartItem } = useContext(CartContext);
     const navigate = useNavigate();
     const [qty, setQty] = useState(1);
+    const [userDetail, setUserDetail] = useState(initialState);
 
     var subTotal = 0;
+
+    const handleChange = (e) => {
+        const { name, value } = e.target;
+        setUserDetail({ ...userDetail, [name]: value });
+    };
+
+    const handlePurchase = (e) => {
+        e.preventDefault();
+        if (
+            userDetail.phoneNumber.split("").length === 10 &&
+            userDetail.zip.split("").length === 6 &&
+            userDetail.fname &&
+            userDetail.lname &&
+            userDetail.city &&
+            userDetail.address
+        ) {
+            onOpen();
+            setCartItem([]);
+        } else {
+            toast({
+                title: `Please Enter a Valid Details.`,
+                status: "error",
+                isClosable: true,
+            });
+        }
+    };
 
     const handleClose = () => {
         onClose();
@@ -82,9 +124,24 @@ const Checkout = () => {
                 </div>
             </nav>
 
-            <Flex justifyContent={"space-evenly"} marginTop={"20px"}>
+            <Flex
+                direction={{
+                    lg: "row",
+                    md: "row",
+                    sm: "column",
+                    base: "column",
+                }}
+                justifyContent={{
+                    lg: "space-evenly",
+                    md: "space-evenly",
+                    sm: "center",
+                    base: "center",
+                }}
+                marginTop={"20px"}
+            >
                 <Box
-                    w={"50%"}
+                    margin={{ lg: "0", md: "0", sm: "auto", base: "auto" }}
+                    w={{ lg: "50%", md: "40%", sm: "80%", base: "80%" }}
                     border="1px solid #969696"
                     padding={10}
                     borderRadius="12px"
@@ -92,17 +149,31 @@ const Checkout = () => {
                     <FormControl isRequired>
                         <Stack spacing={10}>
                             <Flex gap={4}>
-                                <Input placeholder="First name*" />
-                                <Input placeholder="Last name*" />
+                                <Input
+                                    type="text"
+                                    name="fname"
+                                    placeholder="First name*"
+                                    value={userDetail.fname}
+                                    onChange={handleChange}
+                                />
+                                <Input
+                                    type="text"
+                                    name="lname"
+                                    placeholder="Last name*"
+                                    value={userDetail.lname}
+                                    onChange={handleChange}
+                                />
                             </Flex>
                             <HStack>
                                 <FormLabel as="legend">Gender</FormLabel>
-                                <RadioGroup defaultValue="Itachi">
+                                <RadioGroup
+                                    name="gender"
+                                    // value={userDetail.gender}
+                                    // onChange={handleChange}
+                                >
                                     <HStack spacing="24px">
-                                        <Radio defaultChecked value="Sasuke">
-                                            Male
-                                        </Radio>
-                                        <Radio value="Nagato">Female</Radio>
+                                        <Radio value="Male">Male</Radio>
+                                        <Radio value="Female">Female</Radio>
                                     </HStack>
                                 </RadioGroup>
                             </HStack>
@@ -111,37 +182,79 @@ const Checkout = () => {
                                     <InputLeftAddon children="+91" />
                                     <Input
                                         type="tel"
+                                        name="phoneNumber"
+                                        value={userDetail.phoneNumber}
+                                        onChange={handleChange}
                                         placeholder="Phone Number"
                                     />
                                 </InputGroup>
-                                <Input type="email" placeholder="Email" />
+                                <Input
+                                    type="email"
+                                    name="email"
+                                    value={userDetail.email}
+                                    onChange={handleChange}
+                                    placeholder="Email"
+                                />
                             </HStack>
 
                             <Divider />
 
                             <HStack>
-                                <Input placeholder="Address Line 1*" />
+                                <Input
+                                    type="text"
+                                    name="address"
+                                    value={userDetail.address}
+                                    onChange={handleChange}
+                                    placeholder="Address Line 1*"
+                                />
                                 <Input placeholder="Address Line 2" />
                             </HStack>
                             <HStack>
-                                <Input placeholder="Zip / Postal Code*" />
-                                <Input placeholder="City / District*" />
+                                <Input
+                                    type="text"
+                                    name="zip"
+                                    value={userDetail.zip}
+                                    onChange={handleChange}
+                                    placeholder="Zip / Postal Code*"
+                                />
+                                <Input
+                                    type="text"
+                                    name="city"
+                                    value={userDetail.city}
+                                    onChange={handleChange}
+                                    placeholder="City / District*"
+                                />
                             </HStack>
                             <HStack>
-                                <Select variant="outline" placeholder="INDIA">
-                                    <option value="option1">UAE</option>
-                                    <option value="option2">ENGLAND</option>
-                                    <option value="option3">RUSSIA</option>
+                                <Select
+                                    name="country"
+                                    value={userDetail.country}
+                                    onChange={handleChange}
+                                    variant="outline"
+                                    placeholder="Select Country"
+                                >
+                                    <option value="india">INDIA</option>
+                                    <option value="uae">UAE</option>
+                                    <option value="england">ENGLAND</option>
+                                    <option value="russia">RUSSIA</option>
                                 </Select>
-                                <Select variant="outline" placeholder="State">
-                                    <option value="option1">MAHARASHTRA</option>
+                                <Select
+                                    name="state"
+                                    variant="outline"
+                                    value={userDetail.state}
+                                    onChange={handleChange}
+                                    placeholder="State"
+                                >
+                                    <option value="maharashtra">
+                                        MAHARASHTRA
+                                    </option>
                                     <option value="option2">Option 2</option>
                                     <option value="option3">Option 3</option>
                                 </Select>
                             </HStack>
                             <Box>
                                 <Button
-                                    onClick={onOpen}
+                                    onClick={handlePurchase}
                                     colorScheme="teal"
                                     type="submit"
                                     w={"300px"}
@@ -173,7 +286,8 @@ const Checkout = () => {
                     </FormControl>
                 </Box>
                 <Box
-                    w={"30%"}
+                    margin={{ lg: "0", md: "0", sm: "auto", base: "auto" }}
+                    w={{ lg: "30%", md: "30%", sm: "80%", base: "80%" }}
                     h={"fit-content"}
                     border="1px solid #969696"
                     borderRadius="12px"
