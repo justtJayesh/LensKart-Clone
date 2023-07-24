@@ -32,7 +32,7 @@ import React, { useContext, useState } from "react";
 import logo from "../Assets/logo.png";
 import { Link as RouterLink, Navigate, useNavigate } from "react-router-dom";
 import { CartContext } from "../Context/CartContext";
-import { MinusIcon, AddIcon } from "@chakra-ui/icons";
+import { MinusIcon, AddIcon, DeleteIcon } from "@chakra-ui/icons";
 
 const initialState = {
     fname: "",
@@ -50,9 +50,8 @@ const initialState = {
 const Checkout = () => {
     const toast = useToast();
     const { isOpen, onOpen, onClose } = useDisclosure();
-    const { cartItem, setCartItem } = useContext(CartContext);
+    const { cartItem, setCartItem, HandleQty } = useContext(CartContext);
     const navigate = useNavigate();
-    const [qty, setQty] = useState(1);
     const [userDetail, setUserDetail] = useState(initialState);
 
     var subTotal = 0;
@@ -81,6 +80,11 @@ const Checkout = () => {
                 isClosable: true,
             });
         }
+    };
+
+    const handleRemove = (id) => {
+        const updatedCart = cartItem.filter((el) => el.id !== id);
+        setCartItem(updatedCart);
     };
 
     const handleClose = () => {
@@ -302,7 +306,7 @@ const Checkout = () => {
                     <Divider />
                     <VStack>
                         {cartItem?.map((el) => {
-                            subTotal += Number(el.price);
+                            subTotal += Number(el.price * el.qty);
                             return (
                                 <>
                                     <Box
@@ -316,22 +320,34 @@ const Checkout = () => {
                                             <Image src={el.image} w={"100%"} />
                                         </Box>
                                         <Box>
-                                            <Text>Qty</Text>
+                                            {/* <Text>Qty</Text> */}
                                             <Button
-                                                isDisabled={qty === 1}
-                                                onClick={(e) => setQty(qty - 1)}
+                                                isDisabled={el.qty === 1}
+                                                onClick={() =>
+                                                    HandleQty(el, -1)
+                                                }
                                                 variant={"ghost"}
                                             >
                                                 <MinusIcon />
                                             </Button>
                                             <Button variant={"outline"}>
-                                                {qty}
+                                                {el.qty}
                                             </Button>
                                             <Button
-                                                onClick={(e) => setQty(qty + 1)}
+                                                onClick={() => HandleQty(el, 1)}
                                                 variant={"ghost"}
                                             >
                                                 <AddIcon />
+                                            </Button>
+                                        </Box>
+                                        <Box>
+                                            <Button
+                                                onClick={() =>
+                                                    handleRemove(el.id)
+                                                }
+                                                variant={"ghost"}
+                                            >
+                                                <DeleteIcon />
                                             </Button>
                                         </Box>
                                     </Box>
